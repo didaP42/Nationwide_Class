@@ -1,0 +1,10 @@
+.container{
+      width: 50vw;
+      height: 20vh;
+      border: 1px black solid;
+}
+#box{
+    width: 25vw;
+    height: 25vh;
+    border: 1px red solid;
+}

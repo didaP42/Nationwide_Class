@@ -1,0 +1,8 @@
+var numKids = 3;
+var partner = 'Rocket Man';
+var geoLocation = 'New Orleans';
+var jobTitle = 'Penetration Tester'
+
+var future = 'You will be a ' + penetrationTester + ' + newOrleans + ', and married to ' + rocketMan + ' ' + 3 + ' kids.';
+consule.log(future);
+
