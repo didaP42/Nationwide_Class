@@ -1,10 +1,10 @@
 body {
-    background-color: brown;
+    background-color: rgb(99, 94, 94);
     color: burlywood;
 }
 
 button {
-    background-color: cyan;
+    background-color: rgb(15, 17, 17);
 }
 
 .show {
