@@ -22,12 +22,9 @@ html {
 
 body {
   margin: 0;
-  background: radial-gradient(grey, black); 
- 
-  
+  background: radial-gradient(grey, black);
+  /* background: radial-gradient(#9D5900, #3D2200); */
 }
-
-
 
 .page-title {
   color: #0b8b15;
@@ -44,7 +41,7 @@ body {
 }
 
 .game-info {
-  color: #3d0b46;
+  color: #3f054b;
   font-size: 4em;
 }
 
@@ -80,11 +77,11 @@ body {
 }
 
 .card.visible .card-back {
-  transform: rotateY(-180deg); 
+  transform: rotateY(-180deg);
 }
 
 .card.visible .card-front {
-  transform: rotateY(0); 
+  transform: rotateY(0);
 }
 
 .card.matched .card-front .card-value {
@@ -94,7 +91,7 @@ body {
 .card-back {
   background-color: black;
   border-color: #450655;
-  transform: rotateY(0); 
+  transform: rotateY(0);
 }
 
 .cob-web {
@@ -169,7 +166,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: #4d0707;
+  color: #460606;
   font-family: Creepy, serif;
   transition: background-color 500ms, font-size 500ms;
 }
@@ -214,11 +211,9 @@ body {
   .game-info-container {
     flex-direction: column;
     align-items: center;
-
-    
   }
 }
-body {background: #222;}
+
 
 /* leaf animations */
 
@@ -300,7 +295,8 @@ body {background: #222;}
 
 #leaves i:nth-of-type(n)    { background: linear-gradient(to bottom right, #309900, #005600); }
 #leaves i:nth-of-type(2n+2)  { background: linear-gradient(to bottom right, #5e9900, #2b5600); }
-#leaves i:nth-of-type(4n+1)  { background: linear-gradient(to bottom right, #990, #564500); }
+
+leaves i:nth-of-type(4n+1)  { background: linear-gradient(to bottom right, #990, #564500); }
 
 #leaves i:nth-of-type(n)    { opacity: .7;}
 #leaves i:nth-of-type(3n+1)  { opacity: .5;}
@@ -312,13 +308,13 @@ body {background: #222;}
 #leaves i:nth-of-type(n) { -webkit-animation-timing-function:ease-in-out;}
 
 @-webkit-keyframes falling {
-    
+
     0% {
         -webkit-transform:
             translate3d(300,0,0)
             rotate(0deg);
     }
-    
+
     100% {
         -webkit-transform:
             translate3d(-350px,700px,0)
@@ -333,7 +329,7 @@ body {background: #222;}
             translate3d(0,0,0)
             rotate(-20deg);
     }
-    
+
     100% {
         -webkit-transform:
             translate3d(-230px,640px,0)
@@ -348,7 +344,7 @@ body {background: #222;}
             translate3d(0,0,0)
             rotate(90deg);
     }
-    
+
     100% {
         -webkit-transform:
             translate3d(-400px,680px,0)

@@ -1,4 +1,4 @@
-
+// Audio Controller Class
 class AudioController {
     constructor() {
         this.bgMusic = new Audio('Assets/Audio/creepy.mp3');
@@ -8,13 +8,16 @@ class AudioController {
         this.gameOverSound = new Audio('Assets/Audio/gameOver.wav');
         this.bgMusic.volume = 0.5;
         this.bgMusic.loop = true;
+        this.isPlaying = true; // state for pause button
     }
     startMusic() {
         this.bgMusic.play();
+        this.isPlaying = true;
     }
     stopMusic() {
         this.bgMusic.pause();
         this.bgMusic.currentTime = 0;
+        this.isPlaying = false;
     }
     flip() {
         this.flipSound.play();
@@ -30,9 +33,13 @@ class AudioController {
         this.stopMusic();
         this.gameOverSound.play();
     }
-    
-}
-
+    togglePlay() {
+      // Toggles backgroung music
+      this.isPlaying ? this.bgMusic.pause() : this.bgMusic.play();
+    }
+​};
+​
+// Game Class
 class MixOrMatch {
     constructor(totalTime, cards) {
         this.cardsArray = cards;
@@ -42,7 +49,7 @@ class MixOrMatch {
         this.ticker = document.getElementById('flips');
         this.audioController = new AudioController();
     }
-
+​
     startGame() {
         this.totalClicks = 0;
         this.timeRemaining = this.totalTime;
@@ -89,7 +96,7 @@ class MixOrMatch {
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
-
+​
             if(this.cardToCheck) {
                 this.checkForCardMatch(card);
             } else {
@@ -100,9 +107,9 @@ class MixOrMatch {
     checkForCardMatch(card) {
         if(this.getCardType(card) === this.getCardType(this.cardToCheck))
             this.cardMatch(card, this.cardToCheck);
-        else 
+        else
             this.cardMismatch(card, this.cardToCheck);
-
+​
         this.cardToCheck = null;
     }
     cardMatch(card1, card2) {
@@ -135,36 +142,38 @@ class MixOrMatch {
     canFlipCard(card) {
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
-}
-// let PauseButton= document.querySelector("#pausebtn")
-// PauseButton.addEventListener("click", ()=>{
-//     console.log("clicked")
-// this.audioController.stopMusic()   
-// })
-
-
+};
+​
+​
+​
+​
+​
+​
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready);
 } else {
     ready();
 }
-
+​
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
     let game = new MixOrMatch(100, cards);
-
+    // ===========  Pause Button
+    document.getElementById('pausebtn').addEventListener("click", ()=>{
+      game.audioController.isPlaying ? game.audioController.stopMusic() : game.audioController.startMusic()
+      });
+​
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
             game.startGame();
         });
     });
-
+​
     cards.forEach(card => {
         card.addEventListener('click', () => {
             game.flipCard(card);
         });
     });
 }
-
